@@ -15,7 +15,7 @@ function remaining(s){return dayNumber(s)-dayNumber(dateValue(new Date()))}
 function countdown(n){return n===0?'TODAY':n===1?'1 DAY LEFT':n>1?`${n} DAYS LEFT`:n===-1?'1 DAY AGO':`${Math.abs(n)} DAYS AGO`}
 let model={heading:'One thing at a time.',theme:0,size:'1170,2532',safe:true,deadlines:[{title:'Design project',date:inDays(3)},{title:'Final presentation',date:inDays(8)},{title:'A new beginning',date:inDays(21)}]};
 try{const saved=JSON.parse(localStorage.getItem('deadline-wallpaper-v1'));if(saved&&typeof saved.heading==='string'&&themes[saved.theme]&&['1170,2532','1290,2796','1080,2400','1080,1920'].includes(saved.size)&&Array.isArray(saved.deadlines)&&saved.deadlines.length<=6&&saved.deadlines.every(d=>typeof d.title==='string'&&d.title.length<=48&&/^\d{4}-\d{2}-\d{2}$/.test(d.date)&&Number.isFinite(Date.parse(d.date))))model={...model,...saved,heading:saved.heading.slice(0,40),safe:!!saved.safe};}catch{}
-function save(){try{localStorage.setItem('deadline-wallpaper-v1',JSON.stringify(model))}catch{$('status').textContent='Browser storage is unavailable. You can still download your wallpaper.'}}
+function save(){try{localStorage.setItem('deadline-wallpaper-v1',JSON.stringify(model));document.querySelector('.local-badge').textContent='Saved on this device'}catch{document.querySelector('.local-badge').textContent='Unsaved · storage unavailable';$('status').textContent='Browser storage is unavailable. You can still download your wallpaper.'}}
 function renderRows(){
   $('deadlines').replaceChildren();
   model.deadlines.forEach((d,i)=>{
@@ -45,6 +45,7 @@ function draw(){
   items.forEach((d,i)=>{const top=y+i*step;ctx.strokeStyle=t.muted+'40';ctx.beginPath();ctx.moveTo(96,top);ctx.lineTo(1074,top);ctx.stroke();const n=remaining(d.date);ctx.fillStyle=t.fg;fit(ctx,d.title.trim(),96,top+step*.42,650,42,25);ctx.fillStyle=t.muted;ctx.font='24px Arial';ctx.fillText(new Date(d.date+'T12:00:00').toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'}),96,top+step*.72);ctx.fillStyle=t.accent;ctx.textAlign='right';ctx.font='bold 23px Arial';ctx.fillText(countdown(n),1074,top+step*.47);ctx.textAlign='left'});
   ctx.fillStyle=t.muted;ctx.font='23px Arial';ctx.fillText('YOU HAVE TIME. MAKE IT COUNT.',96,height-100);ctx.restore();
   $('dimensions').textContent=`${w} × ${h}`;
+  $('theme-name').textContent=t.name;
   canvas.setAttribute('aria-label',`Wallpaper preview: ${model.heading}. ${items.map(d=>`${d.title}, ${countdown(remaining(d.date))}`).join('. ')}`);
 }
 function update(){save();draw()}
@@ -53,5 +54,5 @@ themes.forEach((t,i)=>{const b=document.createElement('button');b.type='button';
 $('heading').oninput=e=>{model.heading=e.target.value;update()};$('size').onchange=e=>{model.size=e.target.value;update()};$('safe').onchange=e=>{model.safe=e.target.checked;update()};
 $('add').onclick=()=>{model.deadlines.push({title:'',date:inDays(7)});renderRows();update();$('deadlines').lastElementChild.firstElementChild.focus()};
 $('download').onclick=()=>{draw();$('wallpaper').toBlob(blob=>{if(!blob){$('status').textContent='Unable to create image. Please try again.';return}const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=`deadline-wallpaper-${dateValue(new Date())}.png`;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),30000);$('status').textContent='Downloaded! Set the PNG as your phone wallpaper.'},'image/png')};
-renderRows();draw();
+renderRows();update();
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)draw()});

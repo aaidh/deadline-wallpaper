@@ -2,22 +2,22 @@
 <html lang="en">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Turn your deadlines into a beautiful phone wallpaper. Free, private, and made entirely in your browser."><meta name="theme-color" content="#172b26"><title>Deadline Wallpaper — Make room for what matters</title><link rel="icon" href="icon.svg"><link rel="stylesheet" href="style.css"><script src="app.js" defer></script></head>
 <body>
-<header><a class="brand" href="./"><span class="brand-icon">◷</span> Deadline Wallpaper</a><a href="https://github.com/aaidh/deadline-wallpaper" target="_blank" rel="noopener">View on GitHub ↗</a></header>
+<a class="skip-link" href="#editor">Skip to wallpaper editor</a><header><a class="brand" href="./"><img src="icon.svg" width="32" height="32" alt=""> Deadline Wallpaper</a><nav aria-label="Main navigation"><a href="#how-it-works">How it works</a><a class="github-link" href="https://github.com/aaidh/deadline-wallpaper" target="_blank" rel="noopener">GitHub ↗</a></nav></header>
 <main>
-<section class="intro"><div class="eyebrow">A LITTLE FOCUS, EVERY TIME YOU UNLOCK.</div><h1>Your next chapter.<br><em>On your lock screen.</em></h1><p>Turn upcoming deadlines into a wallpaper that keeps what matters in sight. Make it yours, download it, and keep going.</p></section>
-<div class="workspace"><section class="editor" aria-label="Wallpaper editor">
+<section class="intro"><div class="eyebrow"><span class="live-dot"></span> SMALL REMINDERS. BIG POSSIBILITIES.</div><h1>A clearer mind.<br><em>A more intentional lock screen.</em></h1><p>Your exams, projects, and next big thing — beautifully in view.<br>Design a deadline wallpaper that feels like you.</p><div class="benefits"><span>✓ Free to use</span><span>✓ No sign-up</span><span>✓ Private by design</span></div></section>
+<div class="workspace"><section class="editor" id="editor" aria-label="Wallpaper editor"><div class="editor-heading"><div><div class="kicker">YOUR WALLPAPER STUDIO</div><h2>Let’s make it yours.</h2></div><span class="local-badge">Saved on this device</span></div>
 <div class="section-title"><span class="step">01</span><h2>Make it personal</h2></div>
 <label for="heading">Wallpaper title</label><input id="heading" maxlength="40" value="One thing at a time.">
-<label for="size">Phone resolution</label><select id="size"><option value="1170,2532">Standard · 1170 × 2532</option><option value="1290,2796">Large · 1290 × 2796</option><option value="1080,2400">Android · 1080 × 2400</option><option value="1080,1920">Classic · 1080 × 1920</option></select>
-<label>Colour mood</label><div id="themes" class="themes" role="group" aria-label="Colour mood"></div>
+<label for="size">Phone resolution</label><select id="size" aria-describedby="size-hint"><optgroup label="iPhone"><option value="1170,2532">iPhone · 1170 × 2532</option><option value="1290,2796">iPhone Large · 1290 × 2796</option></optgroup><optgroup label="Other phones"><option value="1080,2400">Android · 1080 × 2400</option><option value="1080,1920">Classic · 1080 × 1920</option></optgroup></select><p class="field-hint" id="size-hint">Choose the closest fit. You can adjust the crop on your phone.</p>
+<div class="label-row"><span id="theme-label">Colour mood</span><span id="theme-name">Forest</span></div><div id="themes" class="themes" role="group" aria-labelledby="theme-label"></div>
 <div class="section-title deadline-title"><span class="step">02</span><h2>What’s coming up?</h2><span id="count"></span></div>
 <div id="deadlines"></div><button id="add" class="add" type="button">+ Add a deadline</button>
 <div class="section-title"><span class="step">03</span><h2>Take it with you</h2></div>
 <label class="check"><input type="checkbox" id="safe" checked> Leave room for the lock-screen clock</label>
 <button id="download" class="download" type="button">Download wallpaper <span>↓</span></button>
-<p class="fine">PNG image · No account · No uploads</p><p id="status" role="status"></p>
+<p class="fine">High-resolution PNG · Made entirely in your browser</p><p id="status" role="status"></p>
 </section>
 <section class="preview-panel" aria-label="Live wallpaper preview"><div class="preview-label"><span class="live-dot"></span> LIVE PREVIEW <span id="dimensions">1170 × 2532</span></div><div class="phone"><canvas id="wallpaper" width="1170" height="2532" aria-label="Wallpaper preview with your deadlines"></canvas></div><p class="preview-note">A calmer reminder of what’s ahead.</p><p class="snapshot-note">Countdowns are captured when you download.<br>Generate a fresh wallpaper to update them.</p></section></div>
-<section class="how"><div><span>01 / ADD</span><p>Exams, projects, little milestones.</p></div><div><span>02 / STYLE</span><p>Pick a mood that feels like you.</p></div><div><span>03 / SET</span><p>Save it as your phone wallpaper.</p></div></section>
+<section class="how-section" id="how-it-works" aria-labelledby="how-title"><div class="how-heading"><span class="kicker">FROM PLANS TO PIXELS</span><h2 id="how-title">A little intention. Three simple steps.</h2></div><div class="how"><div><span class="how-number">01</span><h3>Add what matters</h3><p>Give your exams, projects, and personal milestones a place to live.</p></div><div><span class="how-number">02</span><h3>Find your mood</h3><p>Choose your colours, phone size, and a few words to keep you going.</p></div><div><span class="how-number">03</span><h3>Make it your lock screen</h3><p>Download your PNG, open it on your phone, and set it as your wallpaper.</p></div></div></section>
 </main><footer><span>Made for a little more headspace.</span><span>Your plans stay in this browser. <a href="https://github.com/aaidh">Built by aaidh ↗</a></span></footer>
 </body></html>

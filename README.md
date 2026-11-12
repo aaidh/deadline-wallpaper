@@ -12,7 +12,8 @@ Turn exams, project deadlines, and personal milestones into a calm, personalised
 - Up to six deadlines, automatically sorted by date.
 - Calendar-day countdowns, including today and past dates.
 - Five colour themes: Forest, Lavender, Paper, Midnight, and Rose.
-- Four phone resolutions and optional space for the lock-screen clock.
+- Clearly labelled iPhone and iPhone Large presets, plus Android and Classic sizes.
+- Optional space for the lock-screen clock.
 - Local browser storage remembers your design.
 - Responsive interface, labelled controls, and keyboard support.
 - No tracking, external fonts, third-party scripts, or network requests from the app.
